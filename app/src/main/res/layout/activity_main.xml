@@ -61,7 +61,9 @@
                 android:id="@+id/seekBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="6" />
+                android:layout_weight="6"
+                android:max="5"
+                android:progress="2"/>
         </LinearLayout>
 
         <LinearLayout
@@ -76,13 +78,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
-                android:text="Frosting" />
+                android:text="Frosting"
+                android:checked="true" />
 
             <Switch
                 android:id="@+id/switch3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
+                android:checked="true"
                 android:text="Candles" />
         </LinearLayout>
 
@@ -101,10 +105,11 @@
                 android:text="BLOW OUT" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/G"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="Goodbye"
                 android:text="GOODBYE" />
         </LinearLayout>
 
