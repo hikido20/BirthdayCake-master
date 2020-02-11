@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
+import android.graphics.RectF;
+import android.graphics.Rect;
 
 public class CakeView extends SurfaceView {
 
@@ -35,7 +37,8 @@ public class CakeView extends SurfaceView {
     public static final float innerFlameRadius = 15.0f;
 
     private CakeModel CakeModel;
-
+    private android.graphics.RectF rect = new android.graphics.RectF(0,0,0,0);
+    private Paint balloon = new Paint();
 
 
     /**
@@ -44,7 +47,7 @@ public class CakeView extends SurfaceView {
      */
     public CakeView(Context context, AttributeSet attrs) {
         super(context, attrs);
-
+        this.setOnTouchListener(this);
         //This is essential or your onDraw method won't get called
         setWillNotDraw(false);
 
@@ -64,6 +67,17 @@ public class CakeView extends SurfaceView {
 
         setBackgroundColor(Color.WHITE);  //better than black default
         CakeModel = new CakeModel();
+    }
+
+    private void setOnTouchListener(CakeView view) {
+    }
+
+    public void setRect(android.graphics.RectF rect){
+        this.rect = rect;
+    }
+
+    public void setBalloon(Paint balloon) {
+        this.balloon = balloon;
     }
 
     /**
@@ -141,6 +155,7 @@ public class CakeView extends SurfaceView {
             drawCandle(canvas,cakeLeft+cakeWidth/i-candleWidth,cakeTop);
         }
 
+        canvas.drawOval(rect, balloon);
     }//onDraw
 
 
