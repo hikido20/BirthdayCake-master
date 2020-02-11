@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity{
     public void Goodbye(View button) {
        Log.i("button","Goodbye");
     }
-    public void blowOut(View button) {
-        Log.i("button","Blow Out");
+    public void Extinguish(View button) {
+        Log.i("button","Extinguish");
     }
 }
