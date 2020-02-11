@@ -18,6 +18,7 @@ public class CakeView extends SurfaceView {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
+    Paint stringPaint = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -39,6 +40,8 @@ public class CakeView extends SurfaceView {
     private CakeModel CakeModel;
     private android.graphics.RectF rect = new android.graphics.RectF(0,0,0,0);
     private Paint balloon = new Paint();
+    private float xCoord = 0;
+    private float yCoord = 0;
 
 
     /**
@@ -64,6 +67,9 @@ public class CakeView extends SurfaceView {
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
+        stringPaint.setColor(Color.RED);
+        stringPaint.setStyle(Paint.Style.STROKE);
+        stringPaint.setStrokeWidth(4);
 
         setBackgroundColor(Color.WHITE);  //better than black default
         CakeModel = new CakeModel();
@@ -156,6 +162,7 @@ public class CakeView extends SurfaceView {
         }
 
         canvas.drawOval(rect, balloon);
+        canvas.drawLine(xCoord, yCoord + 75, xCoord, yCoord + 165, stringPaint);
     }//onDraw
 
 
@@ -165,5 +172,12 @@ public class CakeView extends SurfaceView {
         return CakeModel;
     }
 
+    public void setxCoord(float xCoord) {
+        this.xCoord = xCoord;
+    }
+
+    public void setyCoord(float yCoord) {
+        this.yCoord = yCoord;
+    }
 }//class CakeView
 

@@ -64,10 +64,13 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
         Paint paint = new Paint();
         paint.setColor(Color.BLUE);
         paint.setStyle(Paint.Style.FILL);
-        android.graphics.RectF rectF = new android.graphics.RectF(x - 10, y + 15, x + 10, y - 15);
+        android.graphics.RectF rectF = new android.graphics.RectF(x - 50, y + 75, x + 50, y - 75);
+
 
         cakeView.setRect(rectF);
         cakeView.setBalloon(paint);
+        cakeView.setxCoord(x);
+        cakeView.setyCoord(y);
         // for a "repaint" so that that the new token shows up
         cakeView.invalidate();
 
