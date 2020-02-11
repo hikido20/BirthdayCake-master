@@ -51,21 +51,23 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
 
     }
 
-
-
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         // do nothing on the event was a "down" touch
-        //if (event.getAction() != MotionEvent.ACTION_DOWN) return false;
+        if (event.getAction() != MotionEvent.ACTION_DOWN) return false;
 
         // get the x and y coordinates for the event
         float x = event.getX();
         float y = event.getY();
 
-
         // create the paint and use the given coordinates
-        CakeModel.setTouchText("big test");
+        Paint paint = new Paint();
+        paint.setColor(Color.BLUE);
+        paint.setStyle(Paint.Style.FILL);
+        android.graphics.RectF rectF = new android.graphics.RectF(x - 10, y + 15, x + 10, y - 15);
 
+        cakeView.setRect(rectF);
+        cakeView.setBalloon(paint);
         // for a "repaint" so that that the new token shows up
         cakeView.invalidate();
 

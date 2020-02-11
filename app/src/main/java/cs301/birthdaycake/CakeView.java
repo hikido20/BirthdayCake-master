@@ -18,7 +18,6 @@ public class CakeView extends SurfaceView {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
-    Paint textPaint = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -38,6 +37,9 @@ public class CakeView extends SurfaceView {
     public static final float innerFlameRadius = 15.0f;
 
     private CakeModel CakeModel;
+    private android.graphics.RectF rect = new android.graphics.RectF(0,0,0,0);
+    private Paint balloon = new Paint();
+
 
     /**
      * ctor must be overridden here as per standard Java inheritance practice.  We need it
@@ -65,14 +67,18 @@ public class CakeView extends SurfaceView {
 
         setBackgroundColor(Color.WHITE);  //better than black default
         CakeModel = new CakeModel();
-        textPaint.setColor(Color.RED);
-        textPaint.setTextSize(50);
     }
 
     private void setOnTouchListener(CakeView view) {
     }
 
+    public void setRect(android.graphics.RectF rect){
+        this.rect = rect;
+    }
 
+    public void setBalloon(Paint balloon) {
+        this.balloon = balloon;
+    }
 
     /**
      * draws a candle at a specified position.  Important:  the left, bottom coordinates specify
@@ -141,8 +147,6 @@ public class CakeView extends SurfaceView {
 
         //Then a second cake layer
         canvas.drawRect(cakeLeft, top, cakeLeft + cakeWidth, bottom, cakePaint);
-        canvas.drawRect(0,0,200,200, textPaint);
-        canvas.drawText("TEST", 50, 300, frostingPaint);
 
         //Now a candle in the center
        // drawCandle(canvas, cakeLeft + cakeWidth/2 - candleWidth/2, cakeTop);
@@ -150,14 +154,14 @@ public class CakeView extends SurfaceView {
         for(int i = 0; i <= CakeModel.numOfCandles ; i++){
             drawCandle(canvas,cakeLeft+cakeWidth/i-candleWidth,cakeTop);
         }
-            canvas.drawText(getCakeModel().getTouchText(), 50, 300, textPaint);
 
-
+        canvas.drawOval(rect, balloon);
     }//onDraw
 
 
 
     public CakeModel getCakeModel(){
+
         return CakeModel;
     }
 
