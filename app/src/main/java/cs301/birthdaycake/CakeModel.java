@@ -11,6 +11,7 @@ public class CakeModel {
     private float xBalloon;
     private float yBalloon;
     private android.graphics.RectF rect;
+    private String text;
 
     public CakeModel() {
         litCandle = true;
@@ -20,6 +21,7 @@ public class CakeModel {
         xBalloon = 0;
         yBalloon = 0;
         rect = new android.graphics.RectF(0,0,0,0);
+        text = ":";
     }
     //get method
 
@@ -54,4 +56,12 @@ public class CakeModel {
     public RectF getRect() {
         return rect;
     }
+
+    public String getText() {
+        return text;
+    }
+
+     public void setText(String s){
+        this.text = s;
+     }
 }

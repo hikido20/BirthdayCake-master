@@ -64,7 +64,7 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
         CakeModel.setRect(x, y);
         CakeModel.setxBalloon(x);
         CakeModel.setyBalloon(y);
-
+        CakeModel.setText(x + "," + y);
         // for a "repaint" so that that the new token shows up
         cakeView.invalidate();
 
