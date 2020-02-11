@@ -6,12 +6,14 @@ public class CakeModel {
     public boolean frosting;
     public boolean candles;
     private CakeModel CakeModel;
+    private String touchText;
 
     public CakeModel() {
         litCandle = true;
         numOfCandles = 2;
         frosting = true;
         candles = true;
+        touchText = "t";
     }
     //get method
 
@@ -30,4 +32,13 @@ public class CakeModel {
     public boolean getCandles() {
         return candles;
     }
+
+    public void setTouchText(String L){
+
+        this.touchText = L;
+    }
+
+    public String getTouchText(){
+        return touchText;    }
 }
+
