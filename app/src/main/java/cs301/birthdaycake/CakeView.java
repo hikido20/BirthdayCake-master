@@ -6,8 +6,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
-import android.graphics.RectF;
-import android.graphics.Rect;
 
 public class CakeView extends SurfaceView {
 
@@ -19,6 +17,7 @@ public class CakeView extends SurfaceView {
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
     Paint stringPaint = new Paint();
+    Paint balloon = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -38,8 +37,6 @@ public class CakeView extends SurfaceView {
     public static final float innerFlameRadius = 15.0f;
 
     private CakeModel CakeModel;
-    private android.graphics.RectF rect = new android.graphics.RectF(0,0,0,0);
-    private Paint balloon = new Paint();
     private float xCoord = 0;
     private float yCoord = 0;
 
@@ -70,16 +67,14 @@ public class CakeView extends SurfaceView {
         stringPaint.setColor(Color.RED);
         stringPaint.setStyle(Paint.Style.STROKE);
         stringPaint.setStrokeWidth(4);
+        balloon.setColor(Color.BLUE);
+        balloon.setStyle(Paint.Style.FILL);
 
         setBackgroundColor(Color.WHITE);  //better than black default
         CakeModel = new CakeModel();
     }
 
     private void setOnTouchListener(CakeView view) {
-    }
-
-    public void setRect(android.graphics.RectF rect){
-        this.rect = rect;
     }
 
     public void setBalloon(Paint balloon) {
@@ -161,8 +156,8 @@ public class CakeView extends SurfaceView {
             drawCandle(canvas,cakeLeft+cakeWidth/i-candleWidth,cakeTop);
         }
 
-        canvas.drawOval(rect, balloon);
-        canvas.drawLine(xCoord, yCoord + 75, xCoord, yCoord + 165, stringPaint);
+        canvas.drawOval(CakeModel.getRect(), balloon);
+        canvas.drawLine(CakeModel.getxBalloon(), CakeModel.getyBalloon() + 75, CakeModel.getxBalloon(), CakeModel.getyBalloon() + 165, stringPaint);
     }//onDraw
 
 
