@@ -25,6 +25,7 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
         Log.d("button1", "Goodbye");
         CakeModel.litCandle = false;
         cakeView.invalidate();
+        //committ
 
     }
 
